@@ -1,46 +1,70 @@
 # Minishell
 
-Welcome to our Minishell!
-This collaborative group project was created with [Sam Reerink](https://github.com/samreerink).
+A Unix shell written in C, inspired by Bash. Built as a collaborative project at Codam (42 Network) with [Sam Reerink](https://github.com/samreerink).
 
-## About Minishell
-With this project, we built a basic shell (similar to bash) that handles command execution, <br>environment variable management, signal handling, and input redirection. 
-<br><br>
-The goal is to create a fully functional command-line interpreter that allows users to execute commands, 
-expand env-variables, manage processes and handle input/output redirection. <br><br>
-Through this project, we have gained a deeper understanding of process management, file descriptors, and 
-how shells interact with the operating system.
+The project explores how shells parse user input, expand environment variables, construct commands, and interact with the operating system through processes, file descriptors, and signals.
 
-## Builtins 🔧
+## Features
 
-| Builtin       | Description    |
-| ------------- |-------------|
-| echo          | Prints text, a string or an env-variable to the standard output. <br> With the -n flag: prevents adding a newline at the end. |
-| cd            | Changes the current working directory to the specified path.|
-| pwd           | Displays the absolute path of the current working directory.   |
-| export        | Lists all the exported environment variables in the shell. |
-| unset         | Removes a variable or function from the shell environment. |
-| env           | Displays the environment variables for the current shell session.|
-| exit          | Exits the shell, terminating the session. |
+- **Command parsing:** Tokenizes input, handles quoted strings, and checks command syntax.
+- **Environment expansion:** Expands environment variables, exit status (`$?`), and process ID (`$$`).
+- **Pipes and redirections:** Supports pipelines, input/output redirection, append mode, and heredocs.
+- **Built-in commands:** Implements `echo`, `cd`, `pwd`, `export`, `unset`, `env`, and `exit`.
+- **Signal handling:** Handles interactive signals such as `Ctrl+C` and `Ctrl+\`.
+- **Environment management:** Maintains and updates environment variables throughout the shell session.
+
+## 🔧 Built-in Commands
+
+| Built-in | Description |
+|---|---|
+| `echo` | Prints text and supports the `-n` flag to omit the trailing newline. |
+| `cd` | Changes the current working directory. |
+| `pwd` | Displays the current working directory. |
+| `export` | Sets environment variables for export and displays exported variables when invoked without arguments. |
+| `unset` | Removes environment variables. |
+| `env` | Displays the environment variables for the current shell session. |
+| `exit` | Exits the shell. |
+
+## My Contributions
+
+I primarily worked on the input-processing pipeline, from tokenizing raw input to preparing commands for execution.
+
+- **Tokenization:** Implemented lexical analysis, splitting input into tokens while handling words, quotes, pipes, and redirection operators.
+- **Environment expansion:** Implemented expansion of environment variables, exit status (`$?`), and process ID (`$$`), including handling quoted strings and adjacent quoted and unquoted segments.
+- **Syntax checking:** Implemented checks for quoting and shell syntax before command execution.
+- **Heredoc expansion:** Worked on expanding variables and special parameters in heredoc input.
+- **Command preparation:** Built and merged command structures from expanded tokens, including handling arguments and redirections.
 
 ## Key learning areas 🎯
 
-• Handling multiple processes.<br>
-• Managing file descriptors.<br>
-• Tokenization.<br>
-• Expanding environment variables.<br>
-• Implementing shell features (pipes, redirections).
+- Handling multiple processes and understanding how shells execute commands.
+- Managing file descriptors and input/output redirection.
+- Tokenization, parsing, and syntax validation.
+- Expanding environment variables and special parameters.
+- Implementing shell features such as pipes, redirections, and heredocs.
+- Collaborating on a larger C project and integrating different parts of a shell.
 
+## Build and Run
 
-## Installation :desktop_computer:
+**Prerequisites:** A compatible Unix-like environment, a C compiler, Make, and the required Readline and terminal libraries.
 
-To try our Minishell yourself, please follow the next steps:
+Compile the project:
 
-1.  Compile our shell with the following command:
+```bash
+make
 ```
-$ make
+
+Start the shell:
+
+```bash
+./minishell
 ```
-2. Execute it with the following command:
-```
-> $ ./minishell
-````
+
+## Technologies
+
+- C
+- Unix / POSIX system calls
+- Processes and file descriptors
+- Pipes and I/O redirection
+- GNU Readline
+- Make
