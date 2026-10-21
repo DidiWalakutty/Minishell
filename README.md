@@ -29,11 +29,11 @@ The project explores how shells parse user input, expand environment variables, 
 
 I primarily worked on the input-processing pipeline, from tokenizing raw input to preparing commands for execution.
 
-- **Tokenization:** Implemented lexical analysis, splitting input into tokens while handling words, quotes, pipes, and redirection operators.
-- **Environment expansion:** Implemented expansion of environment variables, exit status (`$?`), and process ID (`$$`), including handling quoted strings and adjacent quoted and unquoted segments.
-- **Syntax checking:** Implemented checks for quoting and shell syntax before command execution.
-- **Heredoc expansion:** Worked on expanding variables and special parameters in heredoc input.
-- **Command preparation:** Built and merged command structures from expanded tokens, including handling arguments and redirections.
+- **Tokenization:** Implemented lexical analysis, handling quotes, words, and shell operators.
+- **Environment expansion:** Implemented variable and special parameter expansion ($?, $$), including quoted and adjacent quoted/unquoted segments.
+- **Syntax checking:** Implemented validation of quotes and shell syntax before execution.
+- **Heredoc expansion:** Handled variable expansion in heredoc input.
+- **Command preparation:** Built command structures from expanded tokens, including arguments and redirections.
 
 ## Key learning areas 🎯
 
